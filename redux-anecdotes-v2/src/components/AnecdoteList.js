@@ -32,7 +32,7 @@ AnecdoteList.propTypes = ({
 });
 
 const mapStateToProps = state => ({
-  anecdotes: state
+  anecdotes: state.anecdotes
 });
 
 const dispatchToProps = dispatch => ({
