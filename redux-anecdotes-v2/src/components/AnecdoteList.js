@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class AnecdoteList extends React.Component {
   render() {
@@ -22,8 +22,8 @@ class AnecdoteList extends React.Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
-export default AnecdoteList
+export default AnecdoteList;
