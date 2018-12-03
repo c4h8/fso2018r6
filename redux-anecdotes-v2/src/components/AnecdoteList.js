@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as anecdoteActions from '../actions/anecdoteActions';
+import * as notificationActions from '../actions/notificationActions';
 
 class AnecdoteList extends React.Component {
   render() {
@@ -36,7 +37,10 @@ const mapStateToProps = state => ({
 });
 
 const dispatchToProps = dispatch => ({
-  vote: id => dispatch(anecdoteActions.voteAnecdote(id))
+  vote: (id) => {
+    dispatch(anecdoteActions.voteAnecdote(id));
+    dispatch(notificationActions.createNotification({message: 'voted anecdote'}));
+  }
 });
 
 

@@ -17,7 +17,7 @@ export const createNotification = content => {
 
   return dispatch => {
     dispatch(addNotification({...content, id }));
-    setTimeout(() => dispatch(deleteNotification(id)));
+    setTimeout(() => dispatch(deleteNotification(id)), 5000);
   };
 };
 
