@@ -1,0 +1,6 @@
+
+export const CREATE_ANECDOTE = 'CREATE_ANECDOTE';
+
+export const DELETE_ANECDOTE = 'DELETE_ANECDOTE';
+
+export const VOTE_ANECDOTE = 'VOTE_ANECDOTE';

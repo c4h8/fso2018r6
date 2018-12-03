@@ -1,3 +1,5 @@
+import * as types from '../actionTypes';
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -20,18 +22,20 @@ const asObject = (anecdote) => {
 const initialState = anecdotesAtStart.map(asObject);
 
 const reducer = (store = initialState, action) => {
-  if (action.type==='VOTE') {
+  switch (action.type) {
+
+  case types.VOTE_ANECDOTE: {
     const old = store.filter(a => a.id !==action.id);
     const voted = store.find(a => a.id === action.id);
 
-    return [...old, { ...voted, votes: voted.votes+1} ];
-  }
-  if (action.type === 'CREATE') {
+    return [...old, { ...voted, votes: voted.votes+1} ];}
 
+  case types.CREATE_ANECDOTE:
     return [...store, { content: action.content, id: getId(), votes:0 }];
-  }
 
-  return store;
+  default:
+    return store;
+  }
 };
 
 export default reducer;
