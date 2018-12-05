@@ -30,7 +30,7 @@ AnecdoteForm.propTypes = ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createAnecote: content => dispatch(anecdoteActions.createAnecdote(content))
+  createAnecote: content => dispatch(anecdoteActions.postAnecdote(content))
 });
 
 export default connect(null, mapDispatchToProps)(AnecdoteForm);

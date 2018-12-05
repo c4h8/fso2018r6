@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as anecdoteActions from '../actions/anecdoteActions';
-import * as notificationActions from '../actions/notificationActions';
 import Filter from './Filter';
+
+const anecdoteStyle = ({
+  padding: '5px 0px'
+});
 
 class AnecdoteList extends React.Component {
   render() {
@@ -12,12 +15,12 @@ class AnecdoteList extends React.Component {
         <h2>Anecdotes</h2>
         <Filter />
         {this.props.anecdotes.sort((a, b) => b.votes - a.votes).map(anecdote =>
-          <div key={anecdote.id}>
+          <div key={anecdote.id} style={anecdoteStyle}>
             <div>
               {anecdote.content}
             </div>
             <div>
-              has {anecdote.votes}
+              votes: {anecdote.votes} {'\u00A0'}
               <button onClick={() => this.props.vote(anecdote.id) }>
                 vote
               </button>
@@ -41,10 +44,7 @@ const mapStateToProps = (state) => {
 };
 
 const dispatchToProps = dispatch => ({
-  vote: (id) => {
-    dispatch(anecdoteActions.voteAnecdote(id));
-    dispatch(notificationActions.createNotification({message: 'voted anecdote'}));
-  }
+  vote: (id) => dispatch(anecdoteActions.postVote(id))
 });
 
 

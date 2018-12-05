@@ -12,12 +12,12 @@ const deleteNotification = id => ({
   id
 });
 
-export const createNotification = content => {
+export const createNotification = (content, lifespan = 5) => {
   const id = getId();
 
   return dispatch => {
     dispatch(addNotification({...content, id }));
-    setTimeout(() => dispatch(deleteNotification(id)), 5000);
+    setTimeout(() => dispatch(deleteNotification(id)), lifespan * 1000);
   };
 };
 
